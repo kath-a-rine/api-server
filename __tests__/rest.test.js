@@ -18,6 +18,12 @@ let actor = {
   age: '58',
 };
 
+let movie = {
+  title: 'tester: Thelma and Louise',
+  director: 'tester: Ridley Scott',
+  movieId: 1,
+}
+
 describe('Testing REST API', () => {
 
   test('Create an actor', async() => {
@@ -56,11 +62,7 @@ describe('Testing REST API', () => {
   });
 
   test('Create a movie', async() => {
-    let response = await mockRequest.post('/movies').send({
-      name: 'tester: Thelma and Louise',
-      director: 'tester: Ridley Scott',
-      movieId: 1,
-    });
+    let response = await mockRequest.post('/movies').send(movie);
 
     expect(response.status).toEqual(200);
     expect(response.body.title).toEqual('tester: Thelma and Louise');
@@ -68,27 +70,27 @@ describe('Testing REST API', () => {
     expect(response.body.movieId).toEqual(1);
   });
 
-  test('Should all moviess', async() => {
+  test('Should get all movies', async() => {
     let response = await mockRequest.get('/movies');
 
     expect(response.status).toEqual(200);
   });
 
-  test('Get one movies item', async() => {
+  test('Get one movie ', async() => {
     let response = await mockRequest.get('/movies/1');
 
     expect(response.status).toEqual(200);
     expect(response.body.id).toEqual(1);
   });
 
-  test('Should update a movies item', async() => {
+  test('Should update a movie item', async() => {
     let response = await mockRequest.put('/movies/1');
 
     expect(response.status).toEqual(200);
     expect(response.body.id).toEqual(1);
   });
 
-  test('Should delete a movies item', async() => {
+  test('Should delete a movie', async() => {
     let response = await mockRequest.delete('/movies/1');
 
     expect(response.status).toEqual(200);

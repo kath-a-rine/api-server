@@ -2,7 +2,7 @@
   "development": {
     "username": "katharines",
     "password": null,
-    "database": "basic-api-server",
+    "database": "api-server",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

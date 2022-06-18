@@ -1,6 +1,6 @@
 'use strict';
 
-const { sequelize, MovieModel, ActorModel } = require('./src/models');
+const { sequelize } = require('./src/models');
 const server = require('./src/server');
 
 // const { Sequelize, DataTypes } = require('sequelize');

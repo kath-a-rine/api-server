@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const { ActorModel } = require('../models');
+const { actorInterface } = require('../models');
 
 const router = express.Router();
 
@@ -9,36 +9,35 @@ const router = express.Router();
 router.post('/actors', async(req, res, next) => {
   let actor = req.body;
 
-  let response = await ActorModel.create(actor);
+  let response = await actorInterface.create(actor);
   res.status(200).send(response);
 });
 
 //  get all actors
 router.get('/actors', async (req, res, next) => {
-  let allActors = await ActorModel.findAll();
+  let allActors = await actorInterface.readAll();
   res.status(200).send(allActors);
 });
 
 // get one actor
 router.get('/actors/:id', async (req, res, next) => {
   let { id } = req.params;
-  let oneActor = await ActorModel.findOne({where: { id }});
+  let oneActor = await actorInterface.readOne(id);
   res.status(200).send(oneActor);
 });
 
 // put/update an actor 
 router.put('/actors/:id', async (req, res, next) => {
   let { id } = req.params;
-  await ActorModel.update(req.body, {where: { id }});
-  let updatedActor = await ActorModel.findOne({where: { id }});
+  await actorInterface.update(req.body, id);
+  let updatedActor = await actorInterface.readOne(id);
   res.status(200).send(updatedActor);
 });
 
 // delete an actor
 router.delete('/actors/:id', async (req, res, next) => {
   let { id } = req.params;
-  let deletedActor = await ActorModel.findOne({where: { id }});
-  await ActorModel.destroy({where: { id }});
+  let deletedActor = await actorInterface.delete(id);
   res.status(200).send(deletedActor);
 });
 

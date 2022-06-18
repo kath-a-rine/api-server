@@ -38,9 +38,11 @@ class modelInterface {
     }
   }
   // update
-  update(id) {
+  async update(data, id) {
     try{
-
+      await this.model.update(data, {where: { id }});
+      let updatedInstance = await this.model.findOne({where: { id }});
+      return updatedInstance;
     } catch (err) {
       console.error(err);
       return err;
