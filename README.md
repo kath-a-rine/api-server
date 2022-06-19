@@ -10,7 +10,7 @@ Dynamic API Phase 3: Add Database Abstraction and Associations to your API
 
 ### Links and Resources
 
-- [ci/cd - GitHub Actions]
+- [ci/cd - GitHub Actions](https://github.com/kath-a-rine/api-server/actions)
 - [back-end server url](https://api-server-d47.herokuapp.com/)
 - [database URL]('postgres://localhost:5432/api-server')
 
