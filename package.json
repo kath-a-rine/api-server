@@ -1,27 +1,27 @@
 {
-  "name": "basic-api-server",
+  "name": "api-server",
   "version": "1.0.0",
-  "description": "## Project: Express",
+  "description": "## Project: API Server",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "lint": "eslint **/*.js",
-    "test": "jest --verbose --coverage",
-    "test-watch": "jest --watchAll --verbose --coverage",
+    "test": "NODE_ENV=jest --verbose --coverage",
+    "test-watch": "NODE_ENV=jest --watchAll --verbose --coverage",
     "db:config": "sequelize init:config",
     "db:create": "sequelize db:create"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kath-a-rine/basic-api-server.git"
+    "url": "git+https://github.com/kath-a-rine/api-server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kath-a-rine/basic-api-server/issues"
+    "url": "https://github.com/kath-a-rine/api-server/issues"
   },
-  "homepage": "https://github.com/kath-a-rine/basic-api-server#readme",
+  "homepage": "https://github.com/kath-a-rine/api-server#readme",
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
