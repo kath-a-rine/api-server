@@ -24,7 +24,22 @@ let movie = {
   movieId: 1,
 }
 
-describe('Testing REST API', () => {
+// add error handler tests
+describe('Error Handler Tests', () => {
+  test('404 on a bad route', async()=> {
+    let response = await mockRequest.get('/oops');
+    expect(response.status).toEqual(404);
+    expect(response.text).toEqual('Not Found')
+  })
+
+  test('404 on a bad method', async () => {
+    let response = await mockRequest.put('/movies');
+    expect(response.status).toEqual(404);
+    expect(response.text).toEqual('Not Found');
+  });
+});
+
+describe('Testing REST API - actors', () => {
 
   test('Create an actor', async() => {
     let response = await mockRequest.post('/actors').send(actor);
@@ -61,38 +76,43 @@ describe('Testing REST API', () => {
     expect(response.status).toEqual(200);
   });
 
-  test('Create a movie', async() => {
-    let response = await mockRequest.post('/movies').send(movie);
+});
 
-    expect(response.status).toEqual(200);
-    expect(response.body.title).toEqual('tester: Thelma and Louise');
-    expect(response.body.director).toEqual('tester: Ridley Scott');
-    expect(response.body.movieId).toEqual(1);
-  });
+describe('Testing REST API - movies', () => {
+test('Create a movie', async() => {
+  let response = await mockRequest.post('/movies').send(movie);
 
-  test('Should get all movies', async() => {
-    let response = await mockRequest.get('/movies');
+  expect(response.status).toEqual(200);
+  expect(response.body.title).toEqual('tester: Thelma and Louise');
+  expect(response.body.director).toEqual('tester: Ridley Scott');
+  expect(response.body.movieId).toEqual(1);
+});
 
-    expect(response.status).toEqual(200);
-  });
+test('Should get all movies', async() => {
+  let response = await mockRequest.get('/movies');
 
-  test('Get one movie ', async() => {
-    let response = await mockRequest.get('/movies/1');
+  expect(response.status).toEqual(200);
+  //expect(response.body).toEqual(response.body)
+});
 
-    expect(response.status).toEqual(200);
-    expect(response.body.id).toEqual(1);
-  });
+test('Get one movie ', async() => {
+  let response = await mockRequest.get('/movies/1');
 
-  test('Should update a movie item', async() => {
-    let response = await mockRequest.put('/movies/1');
+  expect(response.status).toEqual(200);
+  expect(response.body.id).toEqual(1);
+});
 
-    expect(response.status).toEqual(200);
-    expect(response.body.id).toEqual(1);
-  });
+test('Should update a movie item', async() => {
+  let response = await mockRequest.put('/movies/1');
 
-  test('Should delete a movie', async() => {
-    let response = await mockRequest.delete('/movies/1');
+  expect(response.status).toEqual(200);
+  expect(response.body.id).toEqual(1);
+});
 
-    expect(response.status).toEqual(200);
-  });
+test('Should delete a movie', async() => {
+  let response = await mockRequest.delete('/movies/1');
+
+  expect(response.status).toEqual(200);
+});
+
 });

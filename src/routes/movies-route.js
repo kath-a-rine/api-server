@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const { movieInterface, modelInterface } = require('../models');
+const { movieInterface } = require('../models');
 
 const router = express.Router();
 

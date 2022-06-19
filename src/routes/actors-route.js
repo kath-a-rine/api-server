@@ -29,8 +29,7 @@ router.get('/actors/:id', async (req, res, next) => {
 // put/update an actor 
 router.put('/actors/:id', async (req, res, next) => {
   let { id } = req.params;
-  await actorInterface.update(req.body, id);
-  let updatedActor = await actorInterface.readOne(id);
+  let updatedActor = await actorInterface.update(req.body, id);
   res.status(200).send(updatedActor);
 });
 

@@ -11,7 +11,8 @@ Dynamic API Phase 3: Add Database Abstraction and Associations to your API
 ### Links and Resources
 
 - [ci/cd - GitHub Actions]
-- [back-end server url] - not yet deployed
+- [back-end server url](https://api-server-d47.herokuapp.com/)
+- [database URL]('postgres://localhost:5432/api-server')
 
 ### Setup
 
@@ -21,7 +22,11 @@ Dynamic API Phase 3: Add Database Abstraction and Associations to your API
 
 #### How to initialize/run your application
 
-- `nodemon` on backend
+View deployed application on Heroku
+
+- install dependencies
+- turn on local server with `nodemon` command
+- test application with `npm test` command
 
 #### How to use your library
 
@@ -34,7 +39,15 @@ Dynamic API Phase 3: Add Database Abstraction and Associations to your API
 
 #### Tests
 
-<!-- created Server Tests in the server.test.js file. Test in terminal with `npm test` command. -->
+Tests in `rest.test.js` include the following:
+
+- 404 on bad route
+- 404 on bad method
+- Create a record
+- Read a list of records
+- Read a record
+- Update a record
+- Destroy a record
 
 <!-- #### UML
 

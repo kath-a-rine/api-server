@@ -7,17 +7,17 @@ require('dotenv').config();
 
 const app = express();
 
-const DATABASE_URL = process.env.DATABASE_URL;
-
 const PORT = process.env.PORT || 3002;
 
 app.use(express.json());
 app.use(moviesRouter);
 app.use(actorRouter);
 
+const serverErrorHandler = require('./error-handlers/500');
 const notFoundHandler = require('./error-handlers/404');
 
 app.use('*', notFoundHandler);
+app.use(serverErrorHandler);
 
 module.exports = {
   server: app,
